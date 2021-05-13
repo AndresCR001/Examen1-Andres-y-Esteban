@@ -13,6 +13,6 @@ using namespace Examen1; // se le puede cambiar el nombre a la clase
 void main(array<String^>^ arg) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	MyForm form;	//Reemplazar MyForm por el nombre que se haya usado en Myform.h como "constructor"
+	Examen1::MyForm form;	//Reemplazar MyForm por el nombre que se haya usado en Myform.h como "constructor"
 	Application::Run(% form);
 }
