@@ -3,6 +3,8 @@
 #include <string.h>
 #include "Ejemplo.h"
 
+
+
 //aqui se definen metodos
 
 void Ejemplo::conversorDecimal() {

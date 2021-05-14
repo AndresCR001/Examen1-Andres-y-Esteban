@@ -15,6 +15,7 @@ private:
 public:
 	//declaramos los sets and gets de la clase para poder utilizarlos luego en nuestra programacion
 
+
 	void setNumero(int num) {
 		this->numero = num;
 	}

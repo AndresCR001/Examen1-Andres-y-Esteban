@@ -121,10 +121,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ejemplo.cpp" />
+    <ClCompile Include="ListaEnlazada.cpp" />
     <ClCompile Include="MyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ejemplo.h" />
+    <ClInclude Include="ListaEnlazada.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
