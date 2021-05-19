@@ -1,91 +1,61 @@
 #include "ListaEnlazada.h"
-#include <iostream>
 
-using namespace std;
 
-void ListaEnlazada::crearLista(Nodo** lista)
+ListaEnlazada::ListaEnlazada()
 {
-    *lista = NULL;
+	cabeza = 0;
 }
 
-Nodo* ListaEnlazada::buscar(Nodo* lista, const char* nom) //mejorar el metodo buscar de forma que si lo encuentra me retorne el nodo en caso contrario null 
+void ListaEnlazada::setCabeza(Nodo* c) { cabeza = c; }
+Nodo* ListaEnlazada::getCabeza() { return cabeza; }
+
+Nodo* ListaEnlazada::getUltimo()
 {
-    int encontrado = 0;
-    while (!encontrado && lista != NULL)
-    {
-        if (nom == lista->nombre)
-            encontrado = 1;
-        else 
-            lista = lista->siguiente;
-    }
-    return lista; //me retorna la lista que posee el mismo nombre que estoy buscando
+	Nodo* ultimo = getCabeza(); //para commenzar a ubicar el ultimo desde el primero
+
+	while(ultimo->getSiguiente()!=0){ //si el siguiente es diferente de nulo, significa que existe u pasa a ser el ultimo
+		ultimo = ultimo->getSiguiente(); //recorrer la lista hasta que siguiente sea nulo osea, no hay nada despues de el.
+	}
+	return ultimo;
 }
 
-int ListaEnlazada::listaVacia(Nodo* lista)
+void ListaEnlazada::insertarNodo(Nodo* nuevo)
 {
-    return lista==NULL;
+	if (getCabeza() != 0) {
+		if (getCabeza() == 0) //si la lista esta vacia definimos la cabeza
+			setCabeza(nuevo);
+		else
+			getUltimo()->setSiguiente(nuevo); // agregamos a la ultima parte de la fila nuevo por edio del enlace "siguiente"
+	}
+	}
+Nodo* ListaEnlazada::buscarNodo(int base)
+{
+	Nodo* buscado = getCabeza(); //vamos a buscar desde el comienzo de la lista
+	while ((buscado != 0) && ( buscado->getBase() != base )) {// como es igual identificamos en nodo que estamos buscando {
+		buscado = buscado->getSiguiente();// si no lo encuentra busca enb el siguiente 
+	}
+	return buscado; 
 }
 
-void ListaEnlazada::insertar(Nodo** lista , TipoDato dato, const char* nom)
+void ListaEnlazada::eliminar(int base)
 {
-    Nodo* nuevo;
-    strcpy(nuevo -> nombre, nom);
-    nuevo -> dato = dato;
-    nuevo -> siguiente = *lista;
-    (*lista) = nuevo;
+	Nodo* buscado = getCabeza();
+	Nodo* anterior = 0;
+
+	if (buscado->getBase() == base)//si esta en la cabeza definimos una nueva
+		setCabeza(getCabeza()->getSiguiente());// se elimina la cabeza indicando que la nueva cabeza es el que le sigue
+	else {
+		while ((buscado!=0)&&(buscado->getBase()!=base)) {
+			anterior = buscado;
+			buscado = buscado->getSiguiente();
+		}
+		if (buscado != 0) {// significa que hayamos el nodo que deseamos eliminar
+			anterior->setSiguiente(buscado->getSiguiente()); //hacemos el enlace del anterior con el que le sigue al buscado(nodo a eliminar)
+		}
+	}
+
 }
 
-void ListaEnlazada::suprimir(Nodo** lista)
-{
-    if (!listaVacia(*lista))
-    {
-    Nodo* f;
-    f = *lista;
-    (*lista) = (*lista) -> siguiente;
-    }
-}
 
 
-TipoDato ListaEnlazada::quitar(Nodo** lista)
-{
-    TipoDato tem;
-    Nodo* q;
-
-    if (listaVacia(*lista))
-    {
-        cout<<"Se intento sacar un dato en lista vacia";
-        exit(1);
-    }
-    tem = (*lista) -> dato;
-    q = *lista;
-    (*lista) = (*lista) -> siguiente;
-
-    return tem;
-}
-
-/*TipoDato quitar(Nodo** lista)
-{
-    TipoDato tem = cima(*lista);
-    suprimir(lista);
-    return tem;
-}*/
-
-void ListaEnlazada::limpiarLista(Nodo** lista)
-{
-    while (!listaVacia(*lista))
-    {
-        suprimir(lista);
-    }
-    
-}
-
-TipoDato ListaEnlazada::cima(Nodo* lista)
-{
-    if(listaVacia(lista))
-    {
-        cout<<"Error de ejecucion, lista vacia";
-        exit(1);
-    }
-    return lista -> dato;
-}
 
