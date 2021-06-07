@@ -1,18 +1,19 @@
-#pragma once
+#pragma once 
 #include "ListaEnlazada.h"
 #include "Conversiones.h"
+#include "Nodo.h"
 
 
 
 namespace Examen1 {
-
+	
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
+	//template <class TipoDato>
 	/// <summary>
 	/// Resumen de MyForm
 	/// </summary>
@@ -66,12 +67,12 @@ namespace Examen1 {
 	private: System::Windows::Forms::Label^ label6;
 	protected:
 
+
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
 		System::ComponentModel::Container ^components;
-
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Método necesario para admitir el Diseñador. No se puede modificar
@@ -79,6 +80,47 @@ namespace Examen1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			// aqui definimos los nodos que ya conocemos (un nodo por bas eutilizada + ascii + cantidead de decimales)
+
+			Nodo* NodoBinario = new Nodo();
+			NodoBinario->setNumero(0);
+			NodoBinario->setBase(2);
+			NodoBinario->setSiguiente(0);
+			listaEnlazada->insertarNodo(NodoBinario);
+
+			Nodo* NodoOctal = new Nodo();
+			NodoOctal->setNumero(0);
+			NodoOctal->setBase(8);
+			NodoOctal->setSiguiente(0);
+			listaEnlazada->insertarNodo(NodoOctal);			
+
+			Nodo* NodoHex = new Nodo();
+			NodoHex->setNumero(0);
+			NodoHex->setBase(16);
+			NodoHex->setSiguiente(0);
+			listaEnlazada->insertarNodo(NodoHex);
+
+			Nodo* NodoDecimal = new Nodo();
+			NodoDecimal->setNumero(0);
+			NodoDecimal->setBase(10);
+			NodoDecimal->setSiguiente(0);
+			listaEnlazada->insertarNodo(NodoDecimal);
+
+			Nodo* NodoAscii = new Nodo();
+			NodoAscii->setNumero(0);
+			NodoAscii->setBase(1);
+			NodoAscii->setSiguiente(0);
+			listaEnlazada->insertarNodo(NodoAscii);
+
+			Nodo* NodoDe = new Nodo();
+			NodoDe->setNumero(0);
+			NodoDe->setBase(0);
+			NodoDe->setSiguiente(0);
+			listaEnlazada->insertarNodo(NodoDe);
+
+
+
+
 
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->b_clear = (gcnew System::Windows::Forms::Button());
@@ -95,9 +137,9 @@ namespace Examen1 {
 			this->v_cantDecimales = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
-			// 
+			//
 			// b_clear
-			// 
+			//
 			this->b_clear->Location = System::Drawing::Point(226, 285);
 			this->b_clear->Name = L"b_clear";
 			this->b_clear->Size = System::Drawing::Size(75, 23);
@@ -105,112 +147,112 @@ namespace Examen1 {
 			this->b_clear->Text = L"Clear All";
 			this->b_clear->UseVisualStyleBackColor = true;
 			this->b_clear->Click += gcnew System::EventHandler(this, &MyForm::b_clear_Click);
-			// 
+			//
 			// label1
-			// 
+			//
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(30, 45);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(39, 13);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"Binario";
-			// 
+			//
 			// label2
-			// 
+			//
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(37, 80);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(32, 13);
 			this->label2->TabIndex = 2;
 			this->label2->Text = L"Octal";
-			// 
+			//
 			// label3
-			// 
+			//
 			this->label3->AutoSize = true;
 			this->label3->Location = System::Drawing::Point(24, 117);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(45, 13);
 			this->label3->TabIndex = 3;
 			this->label3->Text = L"Decimal";
-			// 
+			//
 			// label4
-			// 
+			//
 			this->label4->AutoSize = true;
 			this->label4->Location = System::Drawing::Point(1, 158);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(68, 13);
 			this->label4->TabIndex = 4;
 			this->label4->Text = L"Hexadecimal";
-			// 
+			//
 			// label5
-			// 
+			//
 			this->label5->AutoSize = true;
 			this->label5->Location = System::Drawing::Point(16, 193);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(53, 13);
 			this->label5->TabIndex = 5;
 			this->label5->Text = L"Character";
-			// 
+			//
 			// v_binario
-			// 
+			//
 			this->v_binario->Location = System::Drawing::Point(82, 38);
 			this->v_binario->Name = L"v_binario";
 			this->v_binario->Size = System::Drawing::Size(376, 20);
 			this->v_binario->TabIndex = 6;
 			//this->v_binario->TextChanged += gcnew System::EventHandler(this, &MyForm::v_binario_TextChanged);
 			this->v_binario->LostFocus += gcnew System::EventHandler(this, &MyForm::v_binario_LostFocus);
-			// 
+			//
 			// v_octal
-			// 
+			//
 			this->v_octal->Location = System::Drawing::Point(82, 77);
 			this->v_octal->Name = L"v_octal";
 			this->v_octal->Size = System::Drawing::Size(298, 20);
 			this->v_octal->TabIndex = 7;
 			this->v_octal->LostFocus += gcnew System::EventHandler(this, &MyForm::v_octal_LostFocus);
-			// 
+			//
 			// v_decimal
-			// 
+			//
 			this->v_decimal->Location = System::Drawing::Point(82, 114);
 			this->v_decimal->Name = L"v_decimal";
 			this->v_decimal->Size = System::Drawing::Size(273, 20);
 			this->v_decimal->TabIndex = 8;
 			this->v_decimal->LostFocus += gcnew System::EventHandler(this, &MyForm::v_decimal_LostFocus);
-			// 
+			//
 			// v_hex
-			// 
+			//
 			this->v_hex->Location = System::Drawing::Point(82, 155);
 			this->v_hex->Name = L"v_hex";
 			this->v_hex->Size = System::Drawing::Size(256, 20);
 			this->v_hex->TabIndex = 9;
 			this->v_hex->LostFocus += gcnew System::EventHandler(this, &MyForm::v_hex_LostFocus);
-			// 
+			//
 			// v_caracter
-			// 
+			//
 			this->v_caracter->Location = System::Drawing::Point(82, 190);
 			this->v_caracter->Name = L"v_caracter";
 			this->v_caracter->Size = System::Drawing::Size(33, 20);
 			this->v_caracter->TabIndex = 10;
 			this->v_caracter->LostFocus += gcnew System::EventHandler(this, &MyForm::v_caracter_LostFocus);
-			// 
+			//
 			// v_cantDecimales
-			// 
+			//
 			this->v_cantDecimales->Location = System::Drawing::Point(515, 38);
 			this->v_cantDecimales->Name = L"v_cantDecimales";
 			this->v_cantDecimales->Size = System::Drawing::Size(22, 20);
 			this->v_cantDecimales->TabIndex = 11;
 			this->v_cantDecimales->LostFocus += gcnew System::EventHandler(this, &MyForm::cantDecimales_LostFocus);
-			// 
+			//
 			// label6
-			// 
+			//
 			this->label6->AutoSize = true;
 			this->label6->Location = System::Drawing::Point(471, 22);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(114, 13);
 			this->label6->TabIndex = 12;
 			this->label6->Text = L"Cantidad de decimales";
-			// 
+			//
 			// MyForm
-			// 
+			//
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(612, 368);
@@ -234,30 +276,24 @@ namespace Examen1 {
 			this->PerformLayout();
 
 		}
+
+
 #pragma endregion
 
 	//aqui podemos instanciar atributos y metodos (puede ser tambien en otro .h)
 
-	//if labelX .isChanged() then ejecutar accion (modificar seters)
-		//.isSelected()
-		//.getIndex() //listbox
-		//.isChecked() // radioButtons
-
-
-	  //creamos un nodo lista que sera nuestra (raiz o cabecera de lista)
-	
 private: System::Void v_binario_LostFocus(System::Object^ sender, System::EventArgs^ e) {
 	
 	//como el el texto en el textBox cambio significa que se ingreso un numero
 	int base = 2;
 	float num = (float)(Convert::ToDouble(v_binario->Text)); //transformamos ese string a numero para poder insertarlo en la lista
 
-	Nodo* listaIdentificada = listaEnlazada->buscarNodo(base);
+	Nodo* Binario = listaEnlazada->buscarNodo(base);
 	//hay que verificar si ya existe en la lista, de existir se reemplaza el numero, de no existir se agrega
 	
 	//se debe hacer la conversion a las diferentes bases y definir los valosres de los textBox AQUI
 	v_octal->Text = "0";
-	v_decimal->Text = (conversiones->conversorDecimal(listaIdentificada)).ToString();
+	v_decimal->Text = "0";//(conversiones->conversorDecimal(Binario)).ToString();
 	v_caracter->Text = "0";
 	v_hex->Text = "0";
 	v_cantDecimales->Text = "0";
@@ -265,57 +301,69 @@ private: System::Void v_binario_LostFocus(System::Object^ sender, System::EventA
 }
 private: System::Void v_octal_LostFocus(System::Object^ sender, System::EventArgs^ e) {
 	
-
+	int base = 8;
 	//como el el texto en el textBox cambio significa que se ingreso un numero
 	int num = int::Parse(v_octal->Text); //transformamos ese string a numero para poder insertarlo en la lista
 
-	//hay que verificar si ya existe en la lista, de existir se reemplaza el numero, de no existir se agrega
+	
+
+	Nodo* Octal = listaEnlazada->buscarNodo(base);
+	Nodo* cantDecimales = listaEnlazada->buscarNodo(0);
+
+	Octal->setNumero(num);
 
 	//se debe hacer la conversion a las diferentes bases y definir los valosres de los textBox AQUI
-	v_binario->Text = "0";
-	v_decimal->Text = "0";
-	v_caracter->Text = "0";
-	v_hex->Text = "0";
-	v_cantDecimales->Text = "0";
+	v_binario->Text = (conversiones->conversorBinario(Octal)).ToString();
+	v_decimal->Text = (conversiones->conversorDecimal(Octal)).ToString();
+	v_caracter->Text = "0";// (conversiones->conversorAsciir(Octal)).ToString();
+	v_hex->Text = (conversiones->conversorHexadecimal(Octal)).ToString();
+	v_cantDecimales->Text = (cantDecimales->getNumero()).ToString();
 
 }
 private: System::Void v_decimal_LostFocus(System::Object^ sender, System::EventArgs^ e) {
 	//como el el texto en el textBox cambio significa que se ingreso un numero
+	int base = 10;
 	int num = int::Parse(v_decimal->Text); //transformamos ese string a numero para poder insertarlo en la lista
 	
 
-	//hay que verificar si ya existe en la lista, de existir se reemplaza el numero, de no existir se agrega
-	//se debe hacer la conversion a las diferentes bases y definir los valosres de los textBox AQUI
-	v_octal->Text = "0";
-	v_binario->Text = "0";
+	Nodo* Decimal = listaEnlazada->buscarNodo(base);
+	Nodo* cantDecimales = listaEnlazada->buscarNodo(0);
+
+	Decimal->setNumero(num);
+	
+	v_octal->Text = (conversiones->conversorOctal(Decimal)).ToString();
+	v_binario->Text = (conversiones->conversorBinario(Decimal)).ToString();
 	v_caracter->Text = "0";
-	v_hex->Text = "0";
-	v_cantDecimales->Text = "0";
+	v_hex->Text = (conversiones->conversorHexadecimal(Decimal)).ToString();
+	v_cantDecimales->Text = (cantDecimales->getNumero()).ToString();
 
 }
 private: System::Void v_hex_LostFocus(System::Object^ sender, System::EventArgs^ e) {
 	//como el el texto en el textBox cambio significa que se ingreso un numero
+	int base = 16;
 	int num = int::Parse(v_hex->Text); //transformamos ese string a numero para poder insertarlo en la lista
 
+	Nodo* Hexadecimal = listaEnlazada->buscarNodo(base);
+	Nodo* cantDecimales = listaEnlazada->buscarNodo(0);
 
-	//hay que verificar si ya existe en la lista, de existir se reemplaza el numero, de no existir se agrega
-
-	//se debe hacer la conversion a las diferentes bases y definir los valosres de los textBox AQUI
-	v_octal->Text = "0";
-	v_binario->Text = "0";
+	Hexadecimal->setNumero(num);
+	//se debe hacer la conversion a las diferentes bases y definir los valores de los textBox AQUI
+	v_octal->Text = (conversiones->conversorOctal(Hexadecimal)).ToString();
+	v_binario->Text = (conversiones->conversorBinario(Hexadecimal)).ToString();
 	v_caracter->Text = "0";
-	v_decimal->Text = "0";
-	v_cantDecimales->Text = "0";
+	v_decimal->Text = (conversiones->conversorDecimal(Hexadecimal)).ToString();
+	v_cantDecimales->Text = (cantDecimales->getNumero()).ToString();
 
 }
 private: System::Void v_caracter_LostFocus(System::Object^ sender, System::EventArgs^ e) {
 	//como el el texto en el textBox cambio significa que se ingreso un numero
+	int base = 1;
 	int num = int::Parse(v_caracter->Text); //transformamos ese string a numero para poder insertarlo en la lista
 
-	/*Aqui quede conversar lo de ptr interior, alguna idea de solucion? /R se le dio la solucion pensando en que solo
-	existe una lista por eso nos referimos con this->lista hacia esa lista*/
+	Nodo* Ascii = listaEnlazada->buscarNodo(base);
+	Nodo* cantDecimales = listaEnlazada->buscarNodo(0);
 
-	//hay que verificar si ya existe en la lista, de existir se reemplaza el numero, de no existir se agrega
+	Ascii->setNumero(num);
 
 	//se debe hacer la conversion a las diferentes bases y definir los valosres de los textBox AQUI
 	v_octal->Text = "0";
@@ -335,11 +383,11 @@ private: System::Void cantDecimales_LostFocus(System::Object^ sender, System::Ev
 	//hay que verificar si ya existe en la lista, de existir se reemplaza el numero, de no existir se agrega
 
 	//se debe hacer la conversion a las diferentes bases y definir los valosres de los textBox AQUI
-	v_octal->Text = "0";
+	/*v_octal->Text = "0";
 	v_binario->Text = "0";
 	v_caracter->Text = "0";
 	v_hex->Text = "0";
-	v_cantDecimales->Text = "0";
+	v_cantDecimales->Text = "0";*/
 
 }
 private: System::Void b_clear_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -351,6 +399,8 @@ private: System::Void b_clear_Click(System::Object^ sender, System::EventArgs^ e
 	v_hex->Text = " ";
 	v_cantDecimales->Text = " ";
 
+}
+private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
