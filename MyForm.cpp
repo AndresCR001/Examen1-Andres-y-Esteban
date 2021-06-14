@@ -13,15 +13,11 @@ using namespace Examen1; // se le puede cambiar el nombre a la clase
 [STAThread]
 
 int main(array<String^>^ arg) {
-	ListaEnlazada* listaEnlazada = new ListaEnlazada(); // instanciamos la lista enlazada
-	
-
-
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	Examen1::MyForm form;	//Reemplazar MyForm por el nombre que se haya usado en Myform.h como "constructor"
 	Application::Run(% form);
-	ListaEnlazada();
+	//ListaEnlazada();
 
 
 	return 0;
